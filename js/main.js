@@ -262,22 +262,48 @@ mobileLinks.forEach(link => {
   update();
 })();
 
-/* ---- Form submit ---- */
+/* ---- Form submit (Formspree) ---- */
 (function initForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  // Wklej tutaj swój Formspree Form ID po rejestracji na formspree.io
+  const FORMSPREE_ID = 'xzdlrvzd';
+
+  form.addEventListener('submit', async e => {
     e.preventDefault();
+
+    const rodo = form.querySelector('#rodo');
+    if (rodo && !rodo.checked) {
+      rodo.reportValidity();
+      return;
+    }
+
     const btn = form.querySelector('.form-submit');
     btn.textContent = 'Wysyłanie…';
     btn.disabled = true;
 
-    setTimeout(() => {
-      form.style.display = 'none';
-      const success = document.querySelector('.form__success');
-      if (success) success.classList.add('show');
-    }, 1500);
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        const success = document.querySelector('.form__success');
+        if (success) success.classList.add('show');
+      } else {
+        btn.textContent = 'Błąd — spróbuj ponownie';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Błąd sieci — spróbuj ponownie';
+      btn.disabled = false;
+    }
   });
 })();
 

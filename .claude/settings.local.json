@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"D:\\\\Games\\\\Xiaomi-scooters-modification\\\\css\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"D:\\\\Games\\\\Xiaomi-scooters-modification\\\\js\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"D:\\\\Games\\\\Xiaomi-scooters-modification\\\\models\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"D:\\\\Games\\\\Xiaomi-scooters-modification\\\\blog\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"D:\\\\Games\\\\Xiaomi-scooters-modification\\\\images\")"
+    ]
+  }
+}

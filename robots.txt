@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://scootermod.pl/sitemap.xml
+
+# Crawl-delay for well-behaved bots
+Crawl-delay: 1
+
+# Disallow admin/private paths (add as needed)
+Disallow: /admin/
+Disallow: /private/
